@@ -1,0 +1,15 @@
+<launch>
+    <arg name="repeat_rate" value="50.0" />
+
+    <node name="can_driver" pkg="chassis_driver" type="Chassis_driver" output="screen">
+    </node>
+
+    <node name="teleop_keybord" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
+        <param name="repeat_rate" value="$(arg repeat_rate)" />
+        <param name="speed" value="0.1" />
+        <param name="turn" value="0.1" />
+    </node>
+    
+    <node name="my_move_base_bridge" pkg="move_base_bridge" type="move_base_bridge" output="screen">
+    </node>
+</launch>
